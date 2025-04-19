@@ -42,6 +42,24 @@ namespace FinanceHub.Controllers
             return View();
         }
 
+        // Action for the Read page
+        public IActionResult Read()
+        {
+            return View();
+        }
+
+        // Action for the Update page
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        // Action for the Delete page
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
