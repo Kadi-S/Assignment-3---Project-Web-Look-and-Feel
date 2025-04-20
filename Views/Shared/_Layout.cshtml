@@ -8,48 +8,56 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinanceHub.styles.css" asp-append-version="true" />
     <style>
+        html {
+            margin: 0;
+            padding: 0;
+        }
         body {
+            margin: 0;
+            padding: 0;
             background-image: url('/images/background.jpg'); 
             background-size: cover;
             background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-attachment: scroll;
         }
     </style>
 </head>
 <body>
-    <header>
-         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">FinanceHub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Charts">Data Visualization</a></li>
-                        <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Home")">About Us</a></li>
-                    </ul>
+    <div class="d-flex flex-column min-vh-100">
+        <header>
+             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">FinanceHub</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Charts">Data Visualization</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Home")">About Us</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="site-footer bg-dark text-white py-3">
-        <div class="container text-center">
-            <nav class="footer-nav">
-                <a href="@Url.Action("Index","Home")" class="mx-3">Home</a>|
-                <a href="@Url.Action("Charts","Home")" class="mx-3">Data Visualization</a>|
-                <a href="@Url.Action("About","Home")" class="mx-3">About Us</a>
             </nav>
-            <small class="d-block mt-2">© 2025 – FinanceHub – <a href="@Url.Action("Privacy","Home")" class="text-white">Privacy</a></small>
+        </header>
+        <div class="container flex-grow-1">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
+
+        <footer class="site-footer bg-dark text-white py-3">
+            <div class="container text-center">
+                <nav class="footer-nav">
+                    <a href="@Url.Action("Index","Home")" class="mx-3">Home</a>|
+                    <a href="@Url.Action("Charts","Home")" class="mx-3">Data Visualization</a>|
+                    <a href="@Url.Action("About","Home")" class="mx-3">About Us</a>
+                </nav>
+                <small class="d-block mt-2">© 2025 – FinanceHub – <a href="@Url.Action("Privacy","Home")" class="text-white">Privacy</a></small>
+            </div>
+        </footer>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

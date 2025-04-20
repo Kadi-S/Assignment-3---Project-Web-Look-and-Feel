@@ -7,6 +7,14 @@ namespace FinanceHub.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        List<Transaction> transactions = new List<Transaction>{
+         new Transaction{ TransactionID = 1,UserID = 101,Type = "Income",Category = "Salary",Amount = 4000.00m,Date = new DateTime(2025, 4, 1),Description = "Monthly salary"},
+         new Transaction{ TransactionID = 2,UserID = 102,Type = "Expense",Category = "Food",Amount = 200.00m,Date = new DateTime(2025, 4, 2),Description = "Groceries"},
+         new Transaction{ TransactionID = 3,UserID = 101,Type = "Expense",Category = "Transport",Amount = 50.00m,Date = new DateTime(2025, 4, 3),Description = "Bus fare"},
+         new Transaction{ TransactionID = 4,UserID = 103,Type = "Expense",Category = "Entertainment",Amount = 100.00m,Date = new DateTime(2025, 4, 4),Description = "Movie tickets"},
+         new Transaction{ TransactionID = 5,UserID = 103,Type = "Income",Category = "Investment",Amount = 500.00m,Date = new DateTime(2025, 4, 5),Description = "Stock dividends"},
+         new Transaction{ TransactionID = 6,UserID = 104,Type = "Expense",Category = "Utilities",Amount = 150.00m,Date = new DateTime(2025, 4, 6),Description = "Electricity bill"},
+         };
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -52,17 +60,24 @@ namespace FinanceHub.Controllers
         // Action for the Read page
         public IActionResult Read()
         {
-            return View();
+            return View(transactions);
         }
 
         // Action for the Update page
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
-            return View();
+            ViewBag.RecordId = id;
+            return View(); // simulate update
         }
 
         // Action for the Delete page
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
+        {
+            ViewBag.RecordId = id;
+            return View(); // simulate delete
+        }
+
+        public IActionResult CrudOperations()
         {
             return View();
         }

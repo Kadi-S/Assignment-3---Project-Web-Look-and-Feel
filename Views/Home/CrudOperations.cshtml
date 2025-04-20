@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "CRUD Operations";
+}
+
+<div class="container pt-5 mt-5">
+    <h2 class="text-center mb-3">Manage Your Data</h2>
+    <p class="text-center mb-4">
+        Use the links below to simulate how you can manage user and transaction data in your personal finance dashboard.
+    </p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="list-group shadow">
+                <a href="@Url.Action("GetStarted", "Home")" class="list-group-item list-group-item-action">
+                    Create User
+                </a>
+                <a href="@Url.Action("Create", "Home")" class="list-group-item list-group-item-action">
+                    Create Transaction
+                </a>
+                <a href="@Url.Action("Read", "Home")" class="list-group-item list-group-item-action">
+                    Read/View Transactions
+                </a>
+                <a href="@Url.Action("Update", "Home")" class="list-group-item list-group-item-action">
+                    Update Transaction
+                </a>
+                <a href="@Url.Action("Delete", "Home")" class="list-group-item list-group-item-action">
+                    Delete Transaction
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,63 +1,51 @@
-﻿@{
-    ViewData["Title"] = "Get Started - FinanceHub";
+﻿@model FinanceHub.Models.User
+
+@{
+    ViewData["Title"] = "GetStarted";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 
-    <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")">FinanceHub</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Charts", "Home")">Data Visualization</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Home")">About Us</a></li>
-                </ul>
+<h1>GetStarted</h1>
+<h2 class="text-center mt-4 mb-4 fw-bold">Get Started with Smarter Money Management</h2>
+<p class="text-center">We are here to help you better understand your finances through interactive charts. FinanceHub is your personal finance companion that helps you manage your money with ease.</p>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="col-md-6">
+        <form asp-action="GetStarted">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container mt-3 pt-4">
-        <h2 class="text-center mt-4 mb-4 fw-bold">Get Started with Smarter Money Management</h2>
-
-        <p>We are here to help you better understand your finances through interactive charts. FinanceHub is your personal finance companion that helps you manage your money with ease.</p>
-
-        <h3 class="mt-4">How to Use FinanceHub:</h3>
-        <ol>
-            <li><strong>Create</strong> a financial record (Income or Expense).</li>
-            <li><strong>Read</strong> and review your financial data entries.</li>
-            <li><strong>Update</strong> any record as your financial situation changes.</li>
-            <li><strong>Delete</strong> entries you no longer need.</li>
-            <li>Explore <strong>Data Visualization</strong> to gain insights into your finances.</li>
-        </ol>
-
-        <h5 class="mt-4">Tips for Success:</h5>
-        <ul>
-            <li>Be consistent with how you categorize records (Rent, Groceries, Salary, etc.)</li>
-            <li>Keep your entries up to date for accurate insights.</li>
-            <li>Use charts to identify areas where you can save more or cut spending.</li>
-        </ul>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center p-3">
-        <p>&copy; 2025 FinanceHub Team</p>
-    </footer>
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationDate" class="control-label"></label>
+                <input asp-for="RegistrationDate" class="form-control" />
+                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary"/>
+                <a asp-action="Index">Back to List</a>
+            </div>
+            <div>
+                <a asp-action="Index">Sign in</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

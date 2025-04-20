@@ -1,36 +1,18 @@
 ﻿@{
     ViewData["Title"] = "Delete - FinanceHub";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Main Content -->
-    <main class="container mt-5 pt-5">
-        <h1>Delete Financial Record</h1>
-        <p>This page explains how records could be removed from the database.</p>
 
-        <p>To delete a record, the system would typically prompt the user to confirm deletion. After confirmation, the selected record would be removed from the database.</p>
+<div class="container mt-5 pt-5">
+    <h1>Delete Financial Record</h1>
+    <p>This page explains how records could be removed from the database.</p>
 
-        <form class="mt-4">
-            <div class="mb-3">
-                <label for="deleteId" class="form-label">Record ID to Delete</label>
-                <input type="text" class="form-control" id="deleteId" placeholder="Enter record ID">
-            </div>
-            <button type="submit" class="btn btn-danger">Simulate Delete</button>
-        </form>
-    </main>
+    <p>To delete a record, the system would typically prompt the user to confirm deletion. After confirmation, the selected record would be removed from the database.</p>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center p-3 mt-5">
-        <p>&copy; 2025 FinanceHub Team</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <form class="mt-4">
+        <div class="mb-3">
+            <label for="deleteId" class="form-label">Record ID to Delete</label>
+            <input type="text" class="form-control" id="deleteId" placeholder="Enter record ID">
+        </div>
+        <button type="submit" class="btn btn-danger">Simulate Delete</button>
+    </form>
+</div>
