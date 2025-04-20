@@ -42,12 +42,8 @@ namespace FinanceHub.Controllers
         {
             return View();
         }
-        // Action for the Create page
 
-        public IActionResult Add()
-        {
-            return View();
-        }
+        // Action for the Create page
         public IActionResult Create()
         {
             return View();
