@@ -66,8 +66,28 @@ namespace FinanceHub.Controllers
         // Action for the Update page
         public IActionResult Update(int id)
         {
-            ViewBag.RecordId = id;
-            return View(); // simulate update
+            if (id == null)
+            {
+                ViewBag.NeedsTransactionId = true;
+                return View(); // Just ask for ID
+            }
+            var transaction = transactions.FirstOrDefault(t => t.TransactionID == id);
+
+            if (transaction == null)
+            {
+                ViewBag.NeedsTransactionId = true;
+                ViewBag.ErrorMessage = $"Transaction with ID {id} not found.";
+                return View();
+            }
+            return View(transaction);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Transaction updatedTransaction)
+        {
+            // Simulate update
+            TempData["Message"] = $"Transaction #{updatedTransaction.TransactionID} updated.";
+            return RedirectToAction("Read");
         }
 
         // Action for the Delete page

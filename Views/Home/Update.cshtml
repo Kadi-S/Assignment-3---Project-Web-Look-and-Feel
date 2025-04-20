@@ -1,20 +1,67 @@
-﻿@{
+﻿@model FinanceHub.Models.Transaction
+@{
     ViewData["Title"] = "Update - FinanceHub";
+    bool needsId = ViewBag.NeedsTransactionId == true;
 }
 
 <div class="container mt-5 pt-5">
     <h1>Update Financial Record</h1>
-    <p>This page simulates updating a financial record.</p>
 
-    <form class="mt-4">
-        <div class="mb-3">
-            <label for="recordId" class="form-label">Record ID</label>
-            <input type="text" class="form-control" id="recordId" placeholder="Enter ID to update">
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger mt-3">
+            @ViewBag.ErrorMessage
         </div>
-        <div class="mb-3">
-            <label for="newAmount" class="form-label">New Amount</label>
-            <input type="text" class="form-control" id="newAmount" placeholder="Enter new amount">
-        </div>
-        <button type="submit" class="btn btn-dark">Simulate Update</button>
-    </form>
+    }
+
+    @if (needsId)
+    {
+        <p>Please enter a Transaction ID to update:</p>
+        <form method="get" asp-action="Update" class="mt-4">
+            <div class="mb-3">
+                <label for="id" class="form-label">Transaction ID</label>
+                <input type="number" name="id" class="form-control" placeholder="e.g., 1" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Fetch Record</button>
+        </form>
+    }
+    else
+    {
+        <form asp-action="Update" method="post" class="mt-4">
+            <input type="hidden" asp-for="TransactionID" />
+
+            <div class="mb-3">
+                <label asp-for="UserID" class="form-label"></label>
+                <input asp-for="UserID" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Type" class="form-label"></label>
+                <input asp-for="Type" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label"></label>
+                <input asp-for="Category" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Amount" class="form-label"></label>
+                <input asp-for="Amount" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Date" class="form-label"></label>
+                <input asp-for="Date" class="form-control" type="date" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-success">Update</button>
+            <a href="@Url.Action("Read", "Home")" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    }
 </div>
