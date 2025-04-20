@@ -44,9 +44,15 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - FinanceHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="site-footer bg-dark text-white py-3">
+        <div class="container text-center">
+            <nav class="footer-nav">
+                <a href="@Url.Action("Index","Home")" class="mx-3">Home</a>|
+                <a href="@Url.Action("Charts","Home")" class="mx-3">Data Visualization</a>|
+                <a href="@Url.Action("Dashboard","Home")" class="mx-3">Dashboard</a>|
+                <a href="@Url.Action("About","Home")" class="mx-3">About Us</a>
+            </nav>
+            <small class="d-block mt-2">© 2025 – FinanceHub – <a href="@Url.Action("Privacy","Home")" class="text-white">Privacy</a></small>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
