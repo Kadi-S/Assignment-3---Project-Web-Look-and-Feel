@@ -36,6 +36,12 @@ namespace FinanceHub.Controllers
         {
             return View(); // Returns the Privacy.cshtml view
         }
+
+        // Action for Get Started page
+        public IActionResult GetStarted()  // <-- This is the one you just added
+        {
+            return View();
+        }
         // Action for the Create page
 
         public IActionResult Add()
