@@ -93,8 +93,18 @@ namespace FinanceHub.Controllers
         // Action for the Delete page
         public IActionResult Delete(int id)
         {
-            ViewBag.RecordId = id;
-            return View(); // simulate delete
+            var tr = transactions.FirstOrDefault(t => t.TransactionID == id);
+            if (tr != null)
+            {
+                transactions.Remove(tr);
+                TempData["Message"] = $"Transaction #{id} deleted.";
+                return RedirectToAction("Read");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = $"Transaction with ID {id} not found.";
+            }
+            return RedirectToAction("Read"); // simulate delete
         }
 
         public IActionResult CrudOperations()

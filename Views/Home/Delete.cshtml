@@ -8,11 +8,43 @@
 
     <p>To delete a record, the system would typically prompt the user to confirm deletion. After confirmation, the selected record would be removed from the database.</p>
 
-    <form class="mt-4">
-        <div class="mb-3">
-            <label for="deleteId" class="form-label">Record ID to Delete</label>
-            <input type="text" class="form-control" id="deleteId" placeholder="Enter record ID">
-        </div>
-        <button type="submit" class="btn btn-danger">Simulate Delete</button>
-    </form>
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+    }
+
+    @if (Model != null)
+    {
+        <p>Are you sure you want to delete this transaction?</p>
+
+        <dl class="row">
+            <dt class="col-sm-3">Transaction ID</dt>
+            <dd class="col-sm-9">@Model.TransactionID</dd>
+
+            <dt class="col-sm-3">Type</dt>
+            <dd class="col-sm-9">@Model.Type</dd>
+
+            <dt class="col-sm-3">Category</dt>
+            <dd class="col-sm-9">@Model.Category</dd>
+
+            <dt class="col-sm-3">Amount</dt>
+            <dd class="col-sm-9">@Model.Amount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</dd>
+        </dl>
+
+        <form asp-action="DeleteConfirmed" method="post">
+            <input type="hidden" name="id" value="@Model.TransactionID" />
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="@Url.Action("Read", "Home")" class="btn btn-secondary ms-2">Cancel</a>
+        </form>
+    }
+    else
+    {
+        <form method="get" asp-action="Delete">
+            <div class="mb-3">
+                <label for="id" class="form-label">Enter Transaction ID to Delete</label>
+                <input type="number" name="id" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Find Record</button>
+        </form>
+    }
 </div>
